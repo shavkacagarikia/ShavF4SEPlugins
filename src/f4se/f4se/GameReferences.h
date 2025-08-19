@@ -338,8 +338,8 @@ public:
 	virtual void	Unk_F9();
 	virtual void	Unk_FA();
 	virtual void	Unk_FB();
-	virtual void	Unk_FC();
-	virtual void	Unk_FD();
+	virtual void    SetAlpha(float a_newAlpha);
+	virtual float   GetAlpha();
 	virtual bool	IsInCombat(UInt64 unk1 = 0, UInt64 unk2 = 0);
 	virtual void	Unk_FF();
 	virtual void	Unk_100();

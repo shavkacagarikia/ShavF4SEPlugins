@@ -1,0 +1,3 @@
+LIBRARY	"FriendlyNPCsOnCompass"
+EXPORTS
+F4SEPlugin_Load

@@ -570,7 +570,7 @@ extern "C"
 {
 	__declspec(dllexport) F4SEPluginVersionData F4SEPlugin_Version = {
 		F4SEPluginVersionData::kVersion,
-		201,
+		202,
 		"BulletCountedReload",
 		"Shavkacagarikia",
 		0,

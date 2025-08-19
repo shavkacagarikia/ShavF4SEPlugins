@@ -198,8 +198,10 @@ public:
 	virtual ~TESActorBaseData();
 
 	virtual void	Unk_07(void);
-	virtual void	Unk_08(void);
-	virtual void	Unk_09(void);
+	//EDITED SHAV
+	virtual bool	GetIsGhost();         // 08
+	virtual bool	GetInvulnerable();    // 09
+	//
 
 	enum
 	{

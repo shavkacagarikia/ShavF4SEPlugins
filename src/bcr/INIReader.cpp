@@ -43,7 +43,7 @@ void HandleIniFiles() {
 		std::string fileName = modSettingFiles[i].cFileName;
 		std::string fileNameNoSuffix = fileName.substr(0, fileName.size() - 4);
 
-		auto isModEnabled = (*g_dataHandler)->LookupLoadedModByName(fileNameNoSuffix.c_str());
+		auto isModEnabled = (*g_dataHandler)->LookupLoadedModByName(fileNameNoSuffix.c_str()) || (*g_dataHandler)->LookupLoadedLightModByName(fileNameNoSuffix.c_str());
 		if (isModEnabled) {
 
 			std::string ff = "Data\\BCR\\" + fileName;

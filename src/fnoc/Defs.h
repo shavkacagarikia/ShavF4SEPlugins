@@ -1,0 +1,165 @@
+
+#include "f4se/BSCollision.h"
+#include "f4se/GameHandle.h"
+
+enum ActorBaseFlags {
+	kNone = 0,
+	kFemale = 1 << 0,
+	kEssential = 1 << 1,
+	kIsChargenFacePreset = 1 << 2,
+	kRespawn = 1 << 3,
+	kAutoCalcStats = 1 << 4,
+	kUnique = 1 << 5,
+	kDoesntAffectStealthMeter = 1 << 6,
+	kPCLevelMult = 1 << 7,
+	kUsesTemplate = 1 << 8,
+	kProtected = 1 << 11,
+	kSummonable = 1 << 14,
+	kDoesntBleed = 1 << 16,
+	kBleedoutOverride = 1 << 18,
+	kOppositeGenderanims = 1 << 19,
+	kSimpleActor = 1 << 20,
+	kLoopedScript = 1 << 21,  // ?
+	kLoopedAudio = 1 << 28,   // ?
+	kIsGhost = 1 << 29,
+	kInvulnerable = 1 << 31
+};
+
+struct HUDMarkerData
+{
+	enum MarkerIconTypes
+	{
+		MIT_MARKER_INVALID,
+		MIT_MARKER_QUEST,
+		MIT_MARKER_QUEST_DOOR,
+		MIT_MARKER_PLAYERSET,
+		MIT_MARKER_ENEMY,
+		MIT_MARKER_LOCATIONS,
+		MIT_MARKER_ENEMY_TARGETED,
+		MIT_MARKER_POWER_ARMOR,
+		MIT_MARKER_DOGMEAT,
+		MIT_MARKER_TEAMMATE,
+		MIT_MARKER_RECON,
+	};
+
+	enum RelativeMarkerHeight
+	{
+		ENUM_INVALID,
+		BELOW_PLAYER,
+		LEVEL_WITH_PLAYER,
+		ABOVE_PLAYER,
+	};
+
+	enum MARKER_TYPE
+	{
+		MARKER_CAVE,
+		MARKER_CITY,
+		MARKER_DIAMOND_CITY,
+		MARKER_ENCAMPMENT,
+		MARKER_INDUSTRIAL,
+		MARKER_GOVT_BUILDING,
+		MARKER_METRO,
+		MARKER_MILITARY_BASE,
+		MARKER_LANDMARK,
+		MARKER_OFFICE,
+		MARKER_RUINS_TOWN,
+		MARKER_RUINS_URBAN,
+		MARKER_SANCTUARY,
+		MARKER_SETTLEMENT,
+		MARKER_SEWER,
+		MARKER_VAULT,
+		MARKER_AIRFIELD,
+		MARKER_BUNKER_HILL,
+		MARKER_CAMPER,
+		MARKER_CAR,
+		MARKER_CHURCH,
+		MARKER_COUNTRY_CLUB,
+		MARKER_CUSTOM_HOUSE,
+		MARKER_DRIVE_IN,
+		MARKER_ELEVATED_HIGHWAY,
+		MARKER_FANEUIL_HALL,
+		MARKER_FARM,
+		MARKER_FILLING_STATION,
+		MARKER_FOREST,
+		MARKER_GOOD_NEIGHBOR,
+		MARKER_GRAVEYARD,
+		MARKER_HOSPITAL,
+		MARKER_INDUSTRIAL_DOME,
+		MARKER_INDUSTRIAL_STACKS,
+		MARKER_INSTITUTE,
+		MARKER_IRISH_PRIDE,
+		MARKER_JUNKYARD,
+		MARKER_OBSERVATORY,
+		MARKER_PIER,
+		MARKER_POND_OR_LAKE,
+		MARKER_QUARRY,
+		MARKER_RADIOACTIVE_AREA,
+		MARKER_RADIO_TOWER,
+		MARKER_SALEM,
+		MARKER_SCHOOL,
+		MARKER_SHIPWRECK,
+		MARKER_SUBMARINE,
+		MARKER_SWAN_POND,
+		MARKER_SYNTH_HEAD,
+		MARKER_TOWN,
+		MARKER_BOS,
+		MARKER_BROWNSTONE,
+		MARKER_BUNKER,
+		MARKER_CASTLE,
+		MARKER_SKYSCRAPER,
+		MARKER_LIBERTALIA,
+		MARKER_LOWRISE,
+		MARKER_MINUTEMEN,
+		MARKER_POLICE_STATION,
+		MARKER_PRYDWEN,
+		MARKER_RAILROAD_FACTION,
+		MARKER_RAILROAD,
+		MARKER_SATELLITE,
+		MARKER_SENTINEL,
+		MARKER_USS_CONSTITUTION,
+		MARKER_MECHANIST,
+		MARKER_RAIDER_SETTLEMENT,
+		MARKER_VASSAL_SETTLEMENT,
+		MARKER_POTENTIAL_VASSAL_SETTLEMENT,
+		MARKER_BOTTLING_PLANT,
+		MARKER_GALACTIC,
+		MARKER_HUB,
+		MARKER_KIDDIE_KINGDOM,
+		MARKER_MONORAIL,
+		MARKER_RIDES,
+		MARKER_SAFARI,
+		MARKER_WILD_WEST,
+		MARKER_POI,
+		MARKER_DISCIPLES,
+		MARKER_OPERATORS,
+		MARKER_PACK,
+		MARKER_DOOR,
+		MARKER_QUEST,
+		MARKER_QUEST_DOOR,
+		MARKER_QUEST_MULTIPLE,
+		MARKER_PLAYER_SET,
+		MARKER_PLAYER_LOCATION,
+		MARKER_POWER_ARMOR_LOCATION,
+		MARKER_DOGMEAT,
+		MARKER_TEAMMATE,
+		MARKER_COUNT_TOTAL,
+		MARKER_COUNT_EDITOR,
+	};
+
+
+public:
+	// members
+	BSPointerHandle<TESObjectREFR> markerTarget; // 00
+	NiPoint3 markerLocation;                     // 04
+	NiPoint2 movieCoords;                         // 10
+	float heading;                                 // 18
+	float distanceToPlayerSqr;                     // 1C
+	float markerDisplayDistance;                 // 20
+	MarkerIconTypes markerIconType;                 //    24
+	RelativeMarkerHeight relativeMarkerHeight;     // 28
+	RelativeMarkerHeight mapMarkerSubCategories; // 2C
+	MARKER_TYPE mapMarkerType;                     // 30
+	bool showFloatingQuestMarker;                 // 34
+	bool hostile;                                 // 35
+};
+STATIC_ASSERT(sizeof(HUDMarkerData) == 0x38);
