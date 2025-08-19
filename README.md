@@ -3,6 +3,7 @@ Latest sources for my f4se plugins updated for Next-Gen game version
 
 **[Classic Holstered Weapons System (CHW)](https://www.nexusmods.com/fallout4/mods/46101)**  
 **[Bullet Counted Reload System (BCR)](https://www.nexusmods.com/fallout4/mods/41178)**
+**[Friendly NPCs On Compass (FNOC)](https://www.nexusmods.com/fallout4/mods/95776)**
 
 # Notes
 -Built using VS 2019(v142) platform toolset and windows SDK version 8.1.  
