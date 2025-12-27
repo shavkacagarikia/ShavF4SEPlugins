@@ -187,7 +187,7 @@ bool isPipboyOpen() {
 }
 
 typedef bool(*_getHasMandatoryAnimUpdate)(TESObjectREFR* arg1);
-RelocAddr <_getHasMandatoryAnimUpdate> GetHasMandatoryAnimUpdate_HookTarget(0x04D0CB0);
+RelocAddr <_getHasMandatoryAnimUpdate> GetHasMandatoryAnimUpdate_HookTarget(0x0524C30);
 //04D0CB0
 //0BD79F0
 //04BB9E0??
@@ -365,7 +365,7 @@ STATIC_ASSERT(offsetof(TESEquipEvent, instanceData) == 0x90);
 STATIC_ASSERT(offsetof(TESEquipEvent, invItem) == 0x78);
 STATIC_ASSERT(offsetof(TESEquipEvent, item) == 0x88);
 
-DECLARE_EVENT_DISPATCHER(TESEquipEvent, 0x004DD5F0);//NG
+DECLARE_EVENT_DISPATCHER(TESEquipEvent, 0x00531570);//NG
 
 
 
@@ -393,73 +393,6 @@ public:
 	}
 };
 EquipEventSink equipEventSink;
-
-class FurnitureEventSink : public BSTEventSink<TESFurnitureEvent>
-{
-public:
-	virtual	EventResult	ReceiveEvent(TESFurnitureEvent* evn, void* dispatcher) override
-	{
-
-
-		return kEvent_Continue;
-	}
-};
-FurnitureEventSink furnitureEventSink;
-
-class ActivateEventSink : public BSTEventSink<TESActivateEvent>
-{
-public:
-	virtual	EventResult	ReceiveEvent(TESActivateEvent* evn, void* dispatcher) override
-	{
-		if (evn->activator) {
-			if (evn->activator && evn->activator->formType != kFormType_NPC_ && evn->actor != (*g_player)) {
-				/*_MESSAGE("Activate Start by");
-				BSFixedString nam = CALL_MEMBER_FN(evn->actor, GetReferenceName)();
-				_MESSAGE(nam.c_str());
-				CALL_MEMBER_FN(evn->actor, QueueUpdate)(true, 100, true, 0xC);
-				_MESSAGE("Activate End");*/
-				//VisibleHolster::ClearAllHolsters(evn->actor);
-				/*float original = GetScale(evn->actor);
-				SetScale(evn->actor, original + 0.01);
-				SetScale(evn->actor, original);*/
-				//SetPosition(evn->actor, 0, 0, 0);
-				//evn->actor->pos.x += 1;
-				//VisibleHolster::ClearAllHolsters(evn->actor);
-				/*if (g_task)
-				g_task->AddTask(new VHWSetScaleDelegate(evn->actor));*/
-			}
-			/*VisibleHolster::ClearAllHolsters(evn->actor);
-			VisibleHolster::HandleWeaponDisplay(evn->actor->actorState.IsWeaponDrawn(), nullptr, evn->actor);*/
-
-		}
-
-
-		return kEvent_Continue;
-	}
-};
-ActivateEventSink activateEventSink;
-
-
-struct TESCellAttachDetachEvent
-{
-	TESObjectREFR* ref;                    // 00
-	UInt8                                    attached;                // 08
-	UInt8                                    pad09[7];                // 09
-};
-DECLARE_EVENT_DISPATCHER(TESCellAttachDetachEvent, 0x00441DD0);
-
-class TESCellAttachDetachEventSink : public BSTEventSink<TESCellAttachDetachEvent>
-{
-public:
-	virtual	EventResult	ReceiveEvent(TESCellAttachDetachEvent* evn, void* dispatcher) override {
-		return kEvent_Continue;
-	}
-
-
-};
-
-TESCellAttachDetachEventSink tESCellAttachDetachEventSink;
-
 
 
 bool RegisterAfterLoadEvents() {
@@ -656,14 +589,14 @@ extern "C"
 {
 	__declspec(dllexport) F4SEPluginVersionData F4SEPlugin_Version = {
 		F4SEPluginVersionData::kVersion,
-		107,
+		108,
 		"ClassicHolsteredWeapons",
 		"Shavkacagarikia",
 		0,
-		F4SEPluginVersionData::kAddressIndependence_AddressLibrary_1_10_980,
+		F4SEPluginVersionData::kAddressIndependence_AddressLibrary_1_11_137,
 		CURRENT_RELEASE_RUNTIME,
 		0,
-		{ RUNTIME_VERSION_1_10_984 },
+		{ RUNTIME_VERSION_1_11_191 },
 		0,
 	};
 

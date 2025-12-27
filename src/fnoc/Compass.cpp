@@ -25,7 +25,7 @@ namespace Compass {
 
 
 	typedef bool(*_OuterIsInCombatHook)(Actor* a1, Actor* player);
-	RelocAddr <_OuterIsInCombatHook> OuterIsInCombat_HookTarget(0x0D1F6B1); //NG
+	RelocAddr <_OuterIsInCombatHook> OuterIsInCombat_HookTarget(0x0DA51C1); //11.191
 	//4C 8B DC 55 41 56 48 83 EC ? 8B 41
 
 
@@ -96,7 +96,7 @@ namespace Compass {
 
 
 	typedef void* (*_HUDMarkerDataHook)(void* a1, TESObjectREFR* ref, int markerType, UInt8 IsReconScopeTarget, UInt8 hostile);
-	RelocAddr <_HUDMarkerDataHook> HUDMarkerData_HookTarget(0x09757F0); //NG
+	RelocAddr <_HUDMarkerDataHook> HUDMarkerData_HookTarget(0x09C8EE0); //11.91
 	_HUDMarkerDataHook HUDMarkerDataHook_Original;
 
 	void* HUDMarkerData_Hook(void* a1, TESObjectREFR* ref, int markerType, UInt8 isReconScopeTarget, UInt8 hostile) {
@@ -147,7 +147,7 @@ namespace Compass {
 	}
 
 	typedef void* (*_BSGFxDisplayObjectDtor)(BSGFxDisplayObject* obj);
-	RelocAddr <_BSGFxDisplayObjectDtor> BSGFxDisplayObjectDtor_HookTarget(0x096859C); //NG
+	RelocAddr <_BSGFxDisplayObjectDtor> BSGFxDisplayObjectDtor_HookTarget(0x09BBCCC); //11.91
 
 
 	HUDMarkerData* ActiveMarker = nullptr;
@@ -183,7 +183,7 @@ namespace Compass {
 
 
 	typedef float (*GetHostileEnemyMaxDistanceHook)();
-	RelocAddr <GetHostileEnemyMaxDistanceHook> GetHostileEnemyMaxDistance_HookTarget(0x097C9B0);
+	RelocAddr <GetHostileEnemyMaxDistanceHook> GetHostileEnemyMaxDistance_HookTarget(0x09D0110);//11.91
 	GetHostileEnemyMaxDistanceHook GetHostileEnemyMaxDistanceHook_Original;
 
 
@@ -197,7 +197,7 @@ namespace Compass {
 	}
 
 	typedef void* (*_GetMajorFrame)(BSGFxDisplayObject* obj);
-	RelocAddr <_GetMajorFrame> GetMajorFrame_HookTarget(0x0967FFC); //NG
+	RelocAddr <_GetMajorFrame> GetMajorFrame_HookTarget(0x09BB72C); //11.91
 
 
 	void* GetMajorFrame_Hook(HUDMarkerData* hud, void* data2) {

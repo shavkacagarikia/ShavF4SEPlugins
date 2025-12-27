@@ -18,7 +18,7 @@ template <typename T>
 T GetOffset(const void* baseObject, int offset) {
 	return *reinterpret_cast<T*>((uintptr_t)baseObject + offset);
 }
-bool GetPropertyValue(const char * formIdentifier, const char * scriptName, const char * propertyName, VMValue * valueOut);
+
 class VMScript
 {
 public:

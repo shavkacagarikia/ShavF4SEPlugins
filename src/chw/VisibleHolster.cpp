@@ -517,7 +517,7 @@ namespace VisibleHolster {
 	//Get the name of node where specific instance should be attached
 	std::string GetAttachNodeFromWeapon(TESObjectWEAP::InstanceData* instance, TESObjectWEAP* weap) {
 		std::string toRet = "";
-		if (instance && instance->m_refCount > 0 && instance->m_refCount < INT32_MAX && instance->weight > 0) {
+		if (instance && instance->refCount > 0 && instance->refCount < INT32_MAX && instance->weight > 0) {
 			for (size_t i = 0; i < KeywordsVec.size(); i++)
 			{
 				BGSKeyword* currKwd = KeywordsVec.at(i);
@@ -626,52 +626,52 @@ namespace VisibleHolster {
 		/*if (actor != (*g_player)) {
 			return 0;
 		}*/
+		return 0;
+		//float adjustCollector = 0;
+		//if (actor) {
+		//	ActorEquipData* ad = actor->equipData;
+		//	if (ad) {
+		//		for (size_t i = 0; i < ad->kMaxSlots; i++)
+		//		{
+		//			auto curr = (TESObjectARMO*)ad->slots[i].item;
+		//			if (curr && curr->formType == kFormType_ARMO) {
+		//				/*const char* nam = curr->fullName.name.c_str();
+		//				UInt32 wClass = curr->bipedObject.data.weightClass;*/
+		//				//adjustCollector += wClass;
 
-		float adjustCollector = 0;
-		if (actor) {
-			ActorEquipData* ad = actor->equipData;
-			if (ad) {
-				for (size_t i = 0; i < ad->kMaxSlots; i++)
-				{
-					auto curr = (TESObjectARMO*)ad->slots[i].item;
-					if (curr && curr->formType == kFormType_ARMO) {
-						/*const char* nam = curr->fullName.name.c_str();
-						UInt32 wClass = curr->bipedObject.data.weightClass;*/
-						//adjustCollector += wClass;
+		//				/*TBO_InstanceData* inst = ad->slots[i].instanceData;
+		//				if (inst) {
+		//				TESObjectARMO::InstanceData* armInst = (TESObjectARMO::InstanceData*)inst;
 
-						/*TBO_InstanceData* inst = ad->slots[i].instanceData;
-						if (inst) {
-						TESObjectARMO::InstanceData* armInst = (TESObjectARMO::InstanceData*)inst;
+		//				}*/
 
-						}*/
-
-						if (curr->addons.count > 0) {
-							for (size_t j = 0; j < curr->addons.count; j++)
-							{
-								TESObjectARMA* currArma = curr->addons.entries[j].armorAddon;
-								if (currArma) {
-									/*char n = 'a';
-									TESNPC* npc = (TESNPC*)actor->baseForm;
-									currArma->GetNodeName(&n, npc, curr);
-									auto aa = currArma->bipedObject.GetSlotMask();
-									int bb = slotMaskToSlot(aa);
-									if ((aa & currArma->bipedObject.kPart_Body)) {
-										_MESSAGE("body");
-									}
-									int b = slotMaskToSlot(aa);*/
-									if (currArma->weaponAdjust > adjustCollector) {
-										adjustCollector = currArma->weaponAdjust;
-									}
-									//adjustCollector += currArma->weaponAdjust;
-									//sizeof(float) == sizeof(UInt64)
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		return adjustCollector;
+		//				if (curr->addons.count > 0) {
+		//					for (size_t j = 0; j < curr->addons.count; j++)
+		//					{
+		//						TESObjectARMA* currArma = curr->addons.entries[j].armorAddon;
+		//						if (currArma) {
+		//							/*char n = 'a';
+		//							TESNPC* npc = (TESNPC*)actor->baseForm;
+		//							currArma->GetNodeName(&n, npc, curr);
+		//							auto aa = currArma->bipedObject.GetSlotMask();
+		//							int bb = slotMaskToSlot(aa);
+		//							if ((aa & currArma->bipedObject.kPart_Body)) {
+		//								_MESSAGE("body");
+		//							}
+		//							int b = slotMaskToSlot(aa);*/
+		//							if (currArma->weaponAdjust > adjustCollector) {
+		//								adjustCollector = currArma->weaponAdjust;
+		//							}
+		//							//adjustCollector += currArma->weaponAdjust;
+		//							//sizeof(float) == sizeof(UInt64)
+		//						}
+		//					}
+		//				}
+		//			}
+		//		}
+		//	}
+		//}
+		//return adjustCollector;
 	}
 
 	bool CheckIsExcludedWeapon(TESObjectWEAP* weap) {
@@ -774,7 +774,7 @@ namespace VisibleHolster {
 
 
 			//currweapInst = (TESObjectWEAP::InstanceData*)mm;
-			if (mm && mm->m_refCount > 0) {
+			if (mm && mm->refCount > 0) {
 
 				//currweapInst = (TESObjectWEAP::InstanceData*)Runtime_DynamicCast(mm, RTTI_TBO_InstanceData, RTTI_TESObjectWEAP__InstanceData);
 				currweapInst = reinterpret_cast<TESObjectWEAP::InstanceData*>(mm);

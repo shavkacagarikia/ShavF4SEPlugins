@@ -102,7 +102,7 @@ public:
 };
 
 typedef UInt8(*_tf1)(void* thissink, BSAnimationGraphEvent* evnstruct, void** dispatcher);
-RelocAddr <_tf1> tf1_HookTarget(0x236A4D0);
+RelocAddr <_tf1> tf1_HookTarget(0x2565230);
 _tf1 tf1_Original;
 
 
@@ -268,7 +268,7 @@ STATIC_ASSERT(offsetof(TESEquipEvent, item) == 0x88);
 
 
 
-DECLARE_EVENT_DISPATCHER(TESEquipEvent, 0x004DD5F0);//NG
+DECLARE_EVENT_DISPATCHER(TESEquipEvent, 0x00531570);//NG
 
 
 //Equip Handler
@@ -570,14 +570,14 @@ extern "C"
 {
 	__declspec(dllexport) F4SEPluginVersionData F4SEPlugin_Version = {
 		F4SEPluginVersionData::kVersion,
-		202,
+		203,
 		"BulletCountedReload",
 		"Shavkacagarikia",
 		0,
-		F4SEPluginVersionData::kAddressIndependence_AddressLibrary_1_10_980,
+		F4SEPluginVersionData::kAddressIndependence_AddressLibrary_1_11_137,
 		CURRENT_RELEASE_RUNTIME,
 		0,
-		{ RUNTIME_VERSION_1_10_984 },
+		{ RUNTIME_VERSION_1_11_191 },
 		0,
 	};
 

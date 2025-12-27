@@ -255,9 +255,9 @@ public:
 	BSReadWriteLock scriptsLock;					// BDF8
 	tHashSet<IdentifierItem, UInt64> m_attachedScripts;	// BE00
 };
-//STATIC_ASSERT(offsetof(VirtualMachine, m_objectTypes) == 0x168);
-//STATIC_ASSERT(offsetof(VirtualMachine, m_structTypes) == 0x198);
-//STATIC_ASSERT(offsetof(VirtualMachine, m_typeNames) == 0x1C8);
+STATIC_ASSERT(offsetof(VirtualMachine, m_objectTypes) == 0x168);
+STATIC_ASSERT(offsetof(VirtualMachine, m_structTypes) == 0x198);
+STATIC_ASSERT(offsetof(VirtualMachine, m_typeNames) == 0x1C8);
 
 // 87A0?
 class GameVM : public IClientVM
@@ -296,7 +296,7 @@ public:
 	// ...
 
 	MEMBER_FN_PREFIX(GameVM);
-	DEFINE_MEMBER_FN(SendPapyrusEvent, void, 0x01067710, UInt64 handle, const BSFixedString & eventName, std::function<bool(void*)> functor); // Signature not correct yet
+	DEFINE_MEMBER_FN(SendPapyrusEvent, void, 0x010ED150, UInt64 handle, const BSFixedString & eventName, std::function<bool(void*)> functor); // Signature not correct yet
 };
 
 extern RelocPtr <GameVM *> g_gameVM;

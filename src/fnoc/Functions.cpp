@@ -3,19 +3,19 @@
 namespace Functions {
 
 	typedef void* (*_DisplayObjectDtor)(BSGFxDisplayObject* obj);
-	RelocAddr <_DisplayObjectDtor> DisplayObjectDtorInternal(0x19FC8D0); //NG
+	RelocAddr <_DisplayObjectDtor> DisplayObjectDtorInternal(0x1B17790); //11.91
 
 	typedef void* (*_GetMajorFrame)(void* obj, void* obj2);
-	RelocAddr <_GetMajorFrame> GetMajorFrameInternal(0x0975A60); //NG
+	RelocAddr <_GetMajorFrame> GetMajorFrameInternal(0x09C9150); //11.91
 
 	typedef bool(*_IsInCombatWithActorInternal)(Actor* actor1, Actor* actor2);
-	RelocAddr <_IsInCombatWithActorInternal> IsInCombatWithActorInternal(0x0C4A970); //NG
+	RelocAddr <_IsInCombatWithActorInternal> IsInCombatWithActorInternal(0x0CD0420); //11.91
 
 	typedef float(*_GetDistanceFromReference)(TESObjectREFR* caller, TESObjectREFR* a1, TESObjectREFR* a2, UInt8 a3);
-	RelocAddr <_GetDistanceFromReference> GetDistanceFromReferenceInternal(0x04C33B0); //NG
+	RelocAddr <_GetDistanceFromReference> GetDistanceFromReferenceInternal(0x0517330); //11.91
 
 	typedef bool(*_GetHostileToActorInternal)(Actor* actor1, Actor* actor2);
-	RelocAddr <_GetHostileToActorInternal> GetHostileToActorInternal(0x0BF5BD0); //NG
+	RelocAddr <_GetHostileToActorInternal> GetHostileToActorInternal(0x0C7B680); //11.91
 
 	void* GetMajorFrame(void* hudMarketData) {
 		return GetMajorFrameInternal(hudMarketData, hudMarketData);

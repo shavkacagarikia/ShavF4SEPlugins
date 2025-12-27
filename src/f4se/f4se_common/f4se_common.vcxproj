@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BranchTrampoline.h" />
+    <ClInclude Include="CoreInfo.h" />
     <ClInclude Include="f4se_version.h" />
     <ClInclude Include="Relocation.h" />
     <ClInclude Include="SafeWrite.h" />

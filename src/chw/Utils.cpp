@@ -2,38 +2,8 @@
 
 BGSPerk* PowerArmorPerk;
 
-struct PropertyInfo {
-	BSFixedString		scriptName;		// 00
-	BSFixedString		propertyName;	// 08
-	UInt64				unk10;			// 10
-	void*				unk18;			// 18
-	void*				unk20;			// 20
-	void*				unk28;			// 28
-	SInt32				index;			// 30	-1 if not found
-	UInt32				unk34;			// 34
-	BSFixedString		unk38;			// 38
-};
-STATIC_ASSERT(offsetof(PropertyInfo, index) == 0x30);
-STATIC_ASSERT(sizeof(PropertyInfo) == 0x40);
-
-typedef bool(*_GetPropertyValueByIndex)(VirtualMachine* vm, VMIdentifier** identifier, int idx, VMValue* outValue);
-const int Idx_GetPropertyValueByIndex = 0x25;
-
-typedef void* (*_GetPropertyInfo)(VMObjectTypeInfo* objectTypeInfo, void* outInfo, BSFixedString* propertyName, bool unk4);
-RelocAddr <_GetPropertyInfo> GetPropertyInfo_Internal(0x026F3970);
 
 typedef bool(*_IKeywordFormBase_HasKeyword)(IKeywordFormBase* keywordFormBase, BGSKeyword* keyword, UInt32 unk3);
-
-typedef bool(*_HasPerk)(Actor* actor, BGSPerk* perk);
-RelocAddr <_HasPerk> HasPerkInternal(0x0C0C3F0);
-
-bool HasPerk(Actor* actor, BGSPerk* perk) {
-	if (perk) {
-		return HasPerkInternal(actor, perk);
-	}
-	return false;
-}
-
 
 
 
@@ -61,40 +31,6 @@ TESForm * GetFormFromIdentifier(const std::string & identifier)
 		}
 	}
 	return nullptr;
-}
-void GetPropertyInfo(VMObjectTypeInfo * objectTypeInfo, PropertyInfo * outInfo, BSFixedString * propertyName)
-{
-	GetPropertyInfo_Internal(objectTypeInfo, outInfo, propertyName, 1);
-}
-bool GetPropertyValue(const char * formIdentifier, const char * scriptName, const char * propertyName, VMValue * valueOut)
-{
-	TESForm* targetForm = GetFormFromIdentifier(formIdentifier);
-	if (!targetForm) {
-		_WARNING("Warning: Cannot retrieve property value %s from a None form. (%s)", propertyName, formIdentifier);
-		return false;
-	}
-
-	VirtualMachine* vm = (*g_gameVM)->m_virtualMachine;
-	VMScript script(targetForm, scriptName);
-
-	if (!script.m_identifier) {
-		_WARNING("Warning: Cannot retrieve a property value %s from a form with no scripts attached. (%s)", propertyName, formIdentifier);
-		return false;
-	}
-
-	// Find the property
-	PropertyInfo pInfo = {};
-	pInfo.index = -1;
-	GetPropertyInfo(script.m_identifier->m_typeInfo, &pInfo, &BSFixedString(propertyName));
-
-	if (pInfo.index != -1) {
-		vm->GetPropertyValueByIndex(&script.m_identifier, pInfo.index, valueOut);
-		return true;
-	}
-	else {
-		_WARNING("Warning: Property %s does not exist on script %s", propertyName, script.m_identifier->m_typeInfo->m_typeName.c_str());
-		return false;
-	}
 }
 
 BSFixedString GetDisplayName(ExtraDataList* extraDataList, TESForm * kbaseForm)
@@ -178,7 +114,7 @@ TESObjectWEAP::InstanceData* GetInstanceDataFromExtraDataList(ExtraDataList* ext
 	TESObjectWEAP::InstanceData* currweapInst = nullptr;
 
 	TBO_InstanceData* neededInst = nullptr;
-	if (extraDataList && extraDataList->m_data && extraDataList->m_refCount && extraDataList->m_presence) {
+	if (extraDataList && extraDataList->m_data && extraDataList->refCount && extraDataList->m_presence) {
 		BSExtraData * extraData = extraDataList->GetByType(ExtraDataType::kExtraData_InstanceData);
 		if (extraData) {
 			ExtraInstanceData * objectModData = DYNAMIC_CAST(extraData, BSExtraData, ExtraInstanceData);

@@ -39,14 +39,14 @@ extern "C"
 {
 	__declspec(dllexport) F4SEPluginVersionData F4SEPlugin_Version = {
 		F4SEPluginVersionData::kVersion,
-		100,
+		101,
 		"FriendlyNPCsOnCompass",
 		"Shavkacagarikia",
 		0,
-		F4SEPluginVersionData::kAddressIndependence_AddressLibrary_1_10_980,
+		F4SEPluginVersionData::kAddressIndependence_AddressLibrary_1_11_137,
 		CURRENT_RELEASE_RUNTIME,
 		0,
-		{ RUNTIME_VERSION_1_10_984 },
+		{ RUNTIME_VERSION_1_11_191 },
 		0,
 	};
 

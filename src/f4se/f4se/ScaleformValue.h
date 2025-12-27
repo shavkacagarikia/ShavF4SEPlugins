@@ -153,26 +153,26 @@ public:
 		GFxMovieView	* view;
 
 		MEMBER_FN_PREFIX(ObjectInterface);
-		DEFINE_MEMBER_FN(HasMember, bool, 0x019B2E10, void* pData, const char* name);
-		DEFINE_MEMBER_FN(GetMember, bool, 0x019AD750, void* pData, const char* name, GFxValue* pValue, bool isDisplayObj);
-		DEFINE_MEMBER_FN(SetMember, bool, 0x019CBBF0, void* pData, const char* name, const GFxValue* pValue, bool isDisplayObj);
-		DEFINE_MEMBER_FN(Invoke, bool, 0x019B4F10, void * pData, GFxValue * result, const char * name, GFxValue * args, UInt64 numArgs, UInt8 isDisplayObj);
-		DEFINE_MEMBER_FN(CreateEmptyMovieClip, bool, 0x019932C0, void* pData, GFxValue* pValue, const char* instanceName, SInt32 depth);
-		DEFINE_MEMBER_FN(AttachMovie, bool, 0x0198C760, void* pData, GFxValue* pValue, const char* symbolName, const char* instanceName, SInt32 depth, const void * initArgs);
-		DEFINE_MEMBER_FN(GetArraySize, UInt32, 0x019A96D0, void * pData);
-		DEFINE_MEMBER_FN(SetArraySize, bool, 0x01A75DB0, void * pData, UInt32 size);
-		DEFINE_MEMBER_FN(GetElement, bool, 0x019AC190, void * pData, UInt32 index, GFxValue * value);
-		DEFINE_MEMBER_FN(PushBack, bool, 0x019C24D0, void * pData, GFxValue * value);
-		DEFINE_MEMBER_FN(PopBack, bool, 0x019BF740, void * pData, GFxValue * value);
-		DEFINE_MEMBER_FN(VisitElements, void, 0x019D5860, void * pData, ArrayVisitor * visitor, UInt32 idx, SInt32 count);
-		DEFINE_MEMBER_FN(GotoLabeledFrame, bool, 0x019B2B90, void * pData, const char * frameLabel, bool stop);
-		DEFINE_MEMBER_FN(VisitMembers, void, 0x019D5990, void * pData, ObjVisitor * visitor, bool isDisplayObj);
-		DEFINE_MEMBER_FN(GetText, bool, 0x019B1390, void * pData, GFxValue * value, bool html);
-		DEFINE_MEMBER_FN(SetText, bool, 0x019CDE60, void * pData, const char * text, bool html);
-		DEFINE_MEMBER_FN(GetDisplayInfo, bool, 0x019ABAA0, void * pData, DisplayInfo * displayInfo);
-		DEFINE_MEMBER_FN(SetDisplayInfo, bool, 0x019CA4C0, void * pData, DisplayInfo * displayInfo);
-		DEFINE_MEMBER_FN(AddManaged_Internal, void, 0x019BB7E0, GFxValue * value, void * pData);
-		DEFINE_MEMBER_FN(ReleaseManaged_Internal, void, 0x019BB820, GFxValue * value, void * pData);
+		DEFINE_MEMBER_FN(HasMember, bool, 0x01ACDBC0, void* pData, const char* name);
+		DEFINE_MEMBER_FN(GetMember, bool, 0x01AC8500, void* pData, const char* name, GFxValue* pValue, bool isDisplayObj);
+		DEFINE_MEMBER_FN(SetMember, bool, 0x01AE6920, void* pData, const char* name, const GFxValue* pValue, bool isDisplayObj);
+		DEFINE_MEMBER_FN(Invoke, bool, 0x01ACFCC0, void * pData, GFxValue * result, const char * name, GFxValue * args, UInt64 numArgs, UInt8 isDisplayObj);
+		DEFINE_MEMBER_FN(CreateEmptyMovieClip, bool, 0x01AAE070, void* pData, GFxValue* pValue, const char* instanceName, SInt32 depth);
+		DEFINE_MEMBER_FN(AttachMovie, bool, 0x01AA7510, void* pData, GFxValue* pValue, const char* symbolName, const char* instanceName, SInt32 depth, const void * initArgs);
+		DEFINE_MEMBER_FN(GetArraySize, UInt32, 0x01AC4480, void * pData);
+		DEFINE_MEMBER_FN(SetArraySize, bool, 0x01B90EF0, void * pData, UInt32 size);
+		DEFINE_MEMBER_FN(GetElement, bool, 0x01AC6F40, void * pData, UInt32 index, GFxValue * value);
+		DEFINE_MEMBER_FN(PushBack, bool, 0x01ADD280, void * pData, GFxValue * value);
+		DEFINE_MEMBER_FN(PopBack, bool, 0x01ADA4F0, void * pData, GFxValue * value);
+		DEFINE_MEMBER_FN(VisitElements, void, 0x01AF0590, void * pData, ArrayVisitor * visitor, UInt32 idx, SInt32 count);
+		DEFINE_MEMBER_FN(GotoLabeledFrame, bool, 0x01ACD940, void * pData, const char * frameLabel, bool stop);
+		DEFINE_MEMBER_FN(VisitMembers, void, 0x01AF06C0, void * pData, ObjVisitor * visitor, bool isDisplayObj);
+		DEFINE_MEMBER_FN(GetText, bool, 0x01ACC140, void * pData, GFxValue * value, bool html);
+		DEFINE_MEMBER_FN(SetText, bool, 0x01AE8B90, void * pData, const char * text, bool html);
+		DEFINE_MEMBER_FN(GetDisplayInfo, bool, 0x01AC6850, void * pData, DisplayInfo * displayInfo);
+		DEFINE_MEMBER_FN(SetDisplayInfo, bool, 0x01AE51F0, void * pData, DisplayInfo * displayInfo);
+		DEFINE_MEMBER_FN(AddManaged_Internal, void, 0x01AD6590, GFxValue * value, void * pData);
+		DEFINE_MEMBER_FN(ReleaseManaged_Internal, void, 0x01AD65D0, GFxValue * value, void * pData);
 	};
 
 	ObjectInterface	* objectInterface;	// 00
@@ -231,7 +231,7 @@ public:
 	bool	SetDisplayInfo(DisplayInfo * displayInfo);
 
 	MEMBER_FN_PREFIX(GFxValue);
-	DEFINE_MEMBER_FN(RemoveChild_Internal, void, 0x019FC5D0, GFxValue * name);
+	DEFINE_MEMBER_FN(RemoveChild_Internal, void, 0x01B17490, GFxValue * name);
 };
 
 // 38
@@ -365,14 +365,14 @@ public:
 
 	void SetFilterColor(bool isHostile);
 
-	DEFINE_MEMBER_FN_1(Impl_ctor, BSGFxShaderFXTarget *, 0x019E8C60, GFxValue * source);
-	DEFINE_MEMBER_FN_2(Impl_ctor_2, BSGFxShaderFXTarget*, 0x019E8D30, GFxValue* source, const char* memberName);
-	DEFINE_MEMBER_FN_2(Impl_ctor_3, BSGFxShaderFXTarget*, 0x019E8E00, GFxMovieView* source, const char* memberName);
-	DEFINE_MEMBER_FN_0(Impl_dtor, void, 0x019E8BB0);
-	DEFINE_MEMBER_FN_2(Impl_AppendShaderFXInfos, void, 0x019E8FA0, BSTArray<UIShaderFXInfo>* colorFX, BSTArray<UIShaderFXInfo>* backgroundFX);
-	DEFINE_MEMBER_FN_1(GetColorMultipliersFromType, NiColor*, 0x019EA110, NiColor* result); // This function acquires the HUD color by type e.g. normal, PA, hostile
-	DEFINE_MEMBER_FN_2(EnableColorMultipliers, void, 0x019E9E00, const NiColor* color, float brightness); // Sets explicit component filter color
-	DEFINE_MEMBER_FN_0(ApplyBackgroundColorFromType, void, 0x019EA050);
+	DEFINE_MEMBER_FN_1(Impl_ctor, BSGFxShaderFXTarget *, 0x01B039C0, GFxValue * source);
+	DEFINE_MEMBER_FN_2(Impl_ctor_2, BSGFxShaderFXTarget*, 0x01B03AA0, GFxValue* source, const char* memberName);
+	DEFINE_MEMBER_FN_2(Impl_ctor_3, BSGFxShaderFXTarget*, 0x01B03B80, GFxMovieView* source, const char* memberName);
+	DEFINE_MEMBER_FN_0(Impl_dtor, void, 0x01B03910);
+	DEFINE_MEMBER_FN_2(Impl_AppendShaderFXInfos, void, 0x01B03D40, BSTArray<UIShaderFXInfo>* colorFX, BSTArray<UIShaderFXInfo>* backgroundFX);
+	DEFINE_MEMBER_FN_1(GetColorMultipliersFromType, NiColor*, 0x01B04FD0, NiColor* result); // This function acquires the HUD color by type e.g. normal, PA, hostile
+	DEFINE_MEMBER_FN_2(EnableColorMultipliers, void, 0x01B04CC0, const NiColor* color, float brightness); // Sets explicit component filter color
+	DEFINE_MEMBER_FN_0(ApplyBackgroundColorFromType, void, 0x01B04F10);
 };
 STATIC_ASSERT(sizeof(BSGFxShaderFXTarget) == 0xB0);
 

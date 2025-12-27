@@ -1,19 +1,22 @@
 #include "f4se/BSGraphics.h"
 
-// 
-RelocPtr <ImageSpaceManager>		g_imageSpaceManager(0x03CA2BA0);
+
+RelocAddr<BSShaderutil::_ClearRenderPasses> BSShaderutil::ClearRenderPasses(0x021C1190);
 
 // 
-RelocPtr <BSGraphics::Renderer>		g_renderManager(0x03769600);
+RelocPtr <ImageSpaceManager>		g_imageSpaceManager(0x03E47AF0);
 
 // 
-RelocPtr <BSRenderTargetManager>	g_renderTargetManager(0x02CDBED0);
+RelocPtr <BSGraphics::Renderer>		g_renderManager(0x03A0F400);
 
 // 
-RelocPtr <BSShaderResourceManager>	g_shaderResourceManager(0x03192288);
+RelocPtr <BSGraphics::RenderTargetManager>	g_renderTargetManager(0x02F42710);
 
 // 
-RelocPtr <ID3D11Device>				g_D3D11Device(0x03624CA8);
+RelocPtr <BSShaderResourceManager>	g_shaderResourceManager(0x034380A8);
 
 // 
-RelocPtr <ID3D11DeviceContext>		g_D3D11DeviceContext(0x03624C90);
+RelocPtr <ID3D11Device>				g_D3D11Device(0x038CAAA8);
+
+// 
+RelocPtr <ID3D11DeviceContext>		g_D3D11DeviceContext(0x038CAA90);

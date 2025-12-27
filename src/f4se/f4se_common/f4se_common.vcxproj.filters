@@ -6,6 +6,7 @@
     <ClInclude Include="Relocation.h" />
     <ClInclude Include="SafeWrite.h" />
     <ClInclude Include="BranchTrampoline.h" />
+    <ClInclude Include="CoreInfo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities.cpp" />
