@@ -152,13 +152,6 @@ public:
 };
 
 
-typedef void(*_PlaySubgraphAnimation)(VirtualMachine* vm, UInt32 stackId, Actor* target, BSFixedString asEventName);
-RelocAddr <_PlaySubgraphAnimation> PlaySubgraphAnimationInternal(0x138A250);//NG
-
-void PlaySubgraphAnimation(Actor* target, BSFixedString asEventName) {
-	PlaySubgraphAnimationInternal((*g_gameVM)->m_virtualMachine, 0, target, asEventName);
-}
-
 BSTEventDispatcher<void*>* GetGlobalEventDispatcher(BSTGlobalEvent* globalEvents, const char* dispatcherName)
 {
 	for (int i = 0; i < globalEvents->eventSources.count; i++) {
@@ -187,7 +180,7 @@ bool isPipboyOpen() {
 }
 
 typedef bool(*_getHasMandatoryAnimUpdate)(TESObjectREFR* arg1);
-RelocAddr <_getHasMandatoryAnimUpdate> GetHasMandatoryAnimUpdate_HookTarget(0x0524C30);
+RelocAddr <_getHasMandatoryAnimUpdate> GetHasMandatoryAnimUpdate_HookTarget(0x0524C40); //11.221
 //04D0CB0
 //0BD79F0
 //04BB9E0??
@@ -365,7 +358,7 @@ STATIC_ASSERT(offsetof(TESEquipEvent, instanceData) == 0x90);
 STATIC_ASSERT(offsetof(TESEquipEvent, invItem) == 0x78);
 STATIC_ASSERT(offsetof(TESEquipEvent, item) == 0x88);
 
-DECLARE_EVENT_DISPATCHER(TESEquipEvent, 0x00531570);//NG
+DECLARE_EVENT_DISPATCHER(TESEquipEvent, 0x00531580);//11.221
 
 
 

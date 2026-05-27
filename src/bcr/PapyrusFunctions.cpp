@@ -31,14 +31,6 @@ public:
 
 };
 
-typedef void(*_SetAnimationVariableBool)(VirtualMachine* vm, UInt32 stackId, TESObjectREFR* ref, BSFixedString asVariableName, bool newVal);
-RelocAddr <_SetAnimationVariableBool > SetAnimationVariableBoolInternal(0x140EA10);
-
-
-
-void SetAnimationVariableBool(TESObjectREFR* ref, BSFixedString asVariableName, bool newVal) {
-	SetAnimationVariableBoolInternal((*g_gameVM)->m_virtualMachine, 1, ref, asVariableName, newVal);
-}
 
 
 

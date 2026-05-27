@@ -19,8 +19,6 @@ void ShowMessagebox(std::string asText);
 
 void PlaySubgraphAnimation(Actor* target, BSFixedString asEventName);
 
-void SetAnimationVariableBool(TESObjectREFR* ref, BSFixedString asVariableName, bool newVal);
-
 bool SendStopSignal(bool hasPostReload);
 
 void reloadStartHandle();

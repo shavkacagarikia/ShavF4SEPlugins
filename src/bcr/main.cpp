@@ -72,13 +72,6 @@ enum ReloadStates {
 };
 
 
-typedef void(*_PlaySubgraphAnimation)(VirtualMachine* vm, UInt32 stackId, Actor* target, BSFixedString asEventName);
-RelocAddr <_PlaySubgraphAnimation> PlaySubgraphAnimationInternal(0x138A130);//NG
-
-void PlaySubgraphAnimation(Actor* target, BSFixedString asEventName) {
-	PlaySubgraphAnimationInternal((*g_gameVM)->m_virtualMachine, 0, target, asEventName);
-}
-
 BSTEventDispatcher<void*>* GetGlobalEventDispatcher(BSTGlobalEvent* globalEvents, const char* dispatcherName)
 {
 	for (int i = 0; i < globalEvents->eventSources.count; i++) {
@@ -102,7 +95,7 @@ public:
 };
 
 typedef UInt8(*_tf1)(void* thissink, BSAnimationGraphEvent* evnstruct, void** dispatcher);
-RelocAddr <_tf1> tf1_HookTarget(0x2565230);
+RelocAddr <_tf1> tf1_HookTarget(0x2565240); //11.221
 _tf1 tf1_Original;
 
 
@@ -268,7 +261,7 @@ STATIC_ASSERT(offsetof(TESEquipEvent, item) == 0x88);
 
 
 
-DECLARE_EVENT_DISPATCHER(TESEquipEvent, 0x00531570);//NG
+DECLARE_EVENT_DISPATCHER(TESEquipEvent, 0x00531580);//11.221
 
 
 //Equip Handler
@@ -411,46 +404,6 @@ public:
 };
 PlayerSetWeaponStateEventSink playerSetWeaponStateEventSink;
 
-
-typedef void* (*_ActorProcessEvent)(void* arg1, BSAnimationGraphEvent* arg2, void** arg3);
-RelocAddr <_ActorProcessEvent> ActorProcessEvent_HookTarget(0x0DBD4A0);
-
-//RelocAddr <_actorState> actorState_HookTarget(0x2D3F4E0);
-_ActorProcessEvent ActorProcessEvent_Original;
-
-void* Hook(void* arg1, BSAnimationGraphEvent* arg2, void** arg3) {
-	tf1_Hook(arg1, arg2, arg3);
-	return ActorProcessEvent_Original(arg1, arg2, arg3);
-}
-
-void InstallHook() {
-	struct AiProcess_Code : Xbyak::CodeGenerator {
-		AiProcess_Code(void* buf) : Xbyak::CodeGenerator(4096, buf)
-		{
-			Xbyak::Label retnLabel;
-
-			add(bl, dh);
-			movups(xmm2, ptr[rsp + 0x44]);
-
-
-
-			jmp(ptr[rip + retnLabel]);
-
-
-
-
-			L(retnLabel);
-			dq(ActorProcessEvent_HookTarget.GetUIntPtr() + 7);
-		}
-	};
-	void* codeBuf = g_localTrampoline.StartAlloc();
-	AiProcess_Code code(codeBuf);
-	g_localTrampoline.EndAlloc(code.getCurr());
-
-	ActorProcessEvent_Original = (_ActorProcessEvent)codeBuf;
-
-	g_branchTrampoline.Write6Branch(ActorProcessEvent_HookTarget.GetUIntPtr(), (uintptr_t)Hook);
-}
 
 bool RegisterAfterLoadEvents() {
 
